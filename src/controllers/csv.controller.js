@@ -1,6 +1,8 @@
 const fs = require('fs');
 const fast_csv = require('fast-csv');
 
+const products_controler = require('./products.controller');
+
 const uploadProducts = async (req, res) => {
     try {
         if (req.file == undefined) {
@@ -19,10 +21,7 @@ const uploadProducts = async (req, res) => {
                 products.push(row);
             })
             .on('end', () => {
-                //aqui chamar função para checagem de regras dos produtos
-                products.map(product => {
-                    console.log(product);
-                });
+                return products_controler.getAllProductFromArray(products, res);
             });
 
     } catch (error) {

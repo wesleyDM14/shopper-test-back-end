@@ -1,7 +1,7 @@
 const express = require('express');
 const db = require('../db');
-const { default: csvController } = require('../controllers/csv.controller.js');
-const { default: upload } = require('../middleware/upload.js');
+const csvController = require('../controllers/csv.controller.js');
+const upload = require('../middleware/upload.js');
 
 const file_routes = express.Router();
 

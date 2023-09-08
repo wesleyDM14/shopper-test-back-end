@@ -19,7 +19,10 @@ const uploadProducts = async (req, res) => {
                 products.push(row);
             })
             .on('end', () => {
-                //register all products from products array
+                //aqui chamar função para checagem de regras dos produtos
+                products.map(product => {
+                    console.log(product);
+                });
             });
 
     } catch (error) {
@@ -30,6 +33,4 @@ const uploadProducts = async (req, res) => {
     }
 };
 
-export default {
-    uploadProducts,
-}
+module.exports = { uploadProducts }

@@ -12,7 +12,7 @@ global.__basedir = path.resolve() + "/..";
 const server = express();
 
 var corsOptions = {
-    origin: process.env.URL_ORIGIN,
+    origin: process.env.URL_ORIGIN || 'http://localhost:3000/',
 };
 
 server.use(cors(corsOptions));

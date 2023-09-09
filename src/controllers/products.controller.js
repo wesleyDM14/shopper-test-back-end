@@ -88,7 +88,7 @@ const verifyPacksAndComponentsValues = async (products, res) => {
                     for (let element of packsInlist) {
                         const i = sucessCodes.findIndex(e => e.id === element.product_id);
                         if (i > -1) {
-                            totalAux += parseFloat(sucessCodes[i].sales_price);
+                            totalAux += parseFloat(sucessCodes[i].sales_price) * element.qty;
                         } else {
                             let productTemp = await db.selectOneProduct(element.product_id);
                             let aux = productTemp[0];
@@ -106,6 +106,8 @@ const verifyPacksAndComponentsValues = async (products, res) => {
             }
         }
     }
+
+    global.LastArrayCSV = arrayResponse;
 
     return res.status(200).send({
         message: "Lista de Produtos carregado do arquivo CSV.",
